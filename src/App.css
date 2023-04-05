@@ -30,6 +30,24 @@
 
 }
 
+.btnConfDel{
+  float: right;
+  margin-left: 10px;
+
+}
+
+.cardDimesione{
+  width: 100%;
+}
+
+.cardDimRight{
+  float: right;
+}
+
+.completed {
+  background-color: #c8e6c9; /* colore verde chiaro */
+}
+
 
 
 .a {
