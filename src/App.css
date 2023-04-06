@@ -39,6 +39,7 @@
 
 .cardDimesione{
   width: 100%;
+  
 }
 
 .cardDimRight{
@@ -48,6 +49,20 @@
 .completed {
   background-color: #c8e6c9; /* colore verde chiaro */
 }
+
+.colore_menu{
+  background-color: #0d6efd;        
+}
+
+.dimForm{
+  margin-bottom: 10px;
+  margin-top: 1em;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 8px;
+  
+}
+
 
 
 
@@ -69,6 +84,7 @@ code, pre {
 .code {
   padding: 0.2em 0.4em;
   border-radius: 0.3em; 
+  margin-top: 0.3em;
 }
 
 pre {

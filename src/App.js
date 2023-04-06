@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
-import { Button, Card, Form } from 'react-bootstrap';
+import {Button,Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonAppBar from './menu'
+
 
 
 function Todo({ todo, index, markTodo, removeTodo, }) {
@@ -57,9 +58,9 @@ function FormTodo({ addTodo }) {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="dimForm" onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label><b>Cose da fare</b></Form.Label>
+        <Form.Label>Cose da fare</Form.Label>
         <Form.Control type="text" id="input" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Aggiungi Todo" />
       </Form.Group>
       <Button className="bottone" type="submit" >
@@ -68,66 +69,6 @@ function FormTodo({ addTodo }) {
     </Form>
   );
 }
-
-/*
-function App() { 
-  
-
-  const [todos, setTodos] = React.useState(
-    JSON.parse(localStorage.getItem("todos")) || [
-      {
-        text: "",
-        isDone: false
-      }
-    ]
-  );
-
-  React.useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  const markTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isDone = true;
-    setTodos(newTodos);
-  };
-
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
-  return (
-    <div className="app">
-      <div className="container">
-        <h1 className="text-center mb-4">Todo-X</h1>
-        <FormTodo addTodo={addTodo} />
-        <div>
-          {todos.map((todo, index) => (
-            <Card className="code">
-              <Card.Body>
-                <Todo
-                key={index}
-                index={index}
-                todo={todo}
-                markTodo={markTodo}
-                removeTodo={removeTodo}
-                />
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-*/
 
 function App() {
   const [todos, setTodos] = React.useState(
