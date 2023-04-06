@@ -2,10 +2,12 @@ import React from "react";
 import "./App.css";
 import { Button, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ButtonAppBar from './menu'
 
 
 function Todo({ todo, index, markTodo, removeTodo, }) {
   return (
+    
     <div className="todo">
       <Card className="cardDimesione">
         <Card.Header>
@@ -156,7 +158,7 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <h1 className="text-center mb-4">Todo-X</h1>
+      <ButtonAppBar/>       
         <FormTodo addTodo={addTodo} />
         <div>
           {todos.map((todo, index) => (
