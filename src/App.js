@@ -1,11 +1,12 @@
 import React from "react";
+import { useState, useEffect } from "react";
+
 import "./App.css";
 import {Button,Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonAppBar from './menu'
-import { ImageOutlined } from "@mui/icons-material";
 import {firestore} from "./firebase";
-import { getDocs,addDoc,collection } from "firebase/firestore";
+import { getDocs,addDoc,collection,deleteDoc,doc} from "firebase/firestore";
 
 
 
@@ -74,17 +75,33 @@ function FormTodo({ addTodo }) {
 }
 
 function App() {
+  /*
   const [todos, setTodos] = React.useState(
     JSON.parse(localStorage.getItem("todos")) || []
   );
 
-  const ref = collection(firestore,"todos"); //aggiungi nuova raccolta a firebase
+  
 
   React.useEffect(() => {
     
     localStorage.setItem("todos", JSON.stringify(todos));
     
   }, [todos]);
+
+  */
+
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getDocs(collection(firestore, "todos"));
+      setTodos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    fetchData();
+  }, []);
+
+
+  const ref = collection(firestore,"todos"); //aggiungi nuova raccolta a firebase
 
   const addTodo = todo => {
     const newTodos = [...todos, todo];
@@ -100,11 +117,30 @@ function App() {
     setTodos(newTodos);
   };
 
+  /*
   const removeTodo = index => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
+  */
+
+  const removeTodo = async (index, id) => { // aggiunto id come parametro
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  
+    console.log("ID del documento da eliminare: ", id);
+    console.log("Array todos aggiornato: ", newTodos);
+  
+    try {
+      await deleteDoc(doc(firestore, "todos", id));
+      console.log("Documento eliminato con successo!");
+    } catch (error) {
+      console.error("Errore nell'eliminazione del documento: ", error);
+    }
+  };
+  
 
   return (
     <div className="app">
@@ -119,7 +155,7 @@ function App() {
                   index={index}
                   todo={todo}
                   markTodo={markTodo}
-                  removeTodo={removeTodo}
+                  removeTodo={() => removeTodo(index, todo.id)} // aggiunto id come parametro
                 />
               </Card.Body>
             </Card>
