@@ -3,6 +3,9 @@ import "./App.css";
 import {Button,Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonAppBar from './menu'
+import { ImageOutlined } from "@mui/icons-material";
+import {firestore} from "./firebase";
+import { getDocs,addDoc,collection } from "firebase/firestore";
 
 
 
@@ -75,13 +78,20 @@ function App() {
     JSON.parse(localStorage.getItem("todos")) || []
   );
 
+  const ref = collection(firestore,"todos"); //aggiungi nuova raccolta a firebase
+
   React.useEffect(() => {
+    
     localStorage.setItem("todos", JSON.stringify(todos));
+    
   }, [todos]);
 
   const addTodo = todo => {
     const newTodos = [...todos, todo];
     setTodos(newTodos);
+    
+    console.log(todo);
+    addDoc(ref,todo); //aggiungi nouvo record a firebase
   };
 
   const markTodo = index => {
