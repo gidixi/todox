@@ -1,0 +1,70 @@
+[
+    {
+      "text": "Codice Fiscale -> TAX CODE o TAX ID",
+      "isDone": true
+    },
+    {
+      "text": "Partita Iva -> VAT NUMBER",
+      "isDone": true
+    },
+    {
+      "text": "Tradurre la Caption di “Desc delivery times” in dettaglioCliente.php",
+      "isDone": true
+    },
+    {
+      "text": "Quando apri il popup di New Address: - Cambiare Registered in Name o Description o Destination. - Tradurre la caption di Registered che sta in italiano.",
+      "isDone": true
+    },
+    {
+      "text": "Unificare Maiuscolo e minuscolo nelle colonne della tabella(VAT)"
+    },
+    {
+      "text": "Le intestazioni del dettaglio Cliente (Customer,Shipping info) devono essere in maiuscolo, i campi devono avere la lettera iniziale maiuscola.",
+      "isDone": true
+    },
+    {
+      "text": "Prodotti: ->>>>"
+    },
+    {
+      "text": "Item -> Product o Product Name",
+      "isDone": true
+    },
+    {
+      "text": "Tabella Prodotti -> le colonne in basso (Unificale uguale a quelle di sopra) manca una traduzione e un'altra è diversa."
+    },
+    {
+      "text": "Ultimo Ordine Popup -> Inserire max length nel campo quantità",
+      "isDone": true
+    },
+    {
+      "text": "CARRELLO: ->>>"
+    },
+    {
+      "text": "Intestazione “Cart Preview” in maiuscolo.",
+      "isDone": true
+    },
+    {
+      "text": "Cambiare le intestazioni della tabella : Item,Qty"
+    },
+    {
+      "text": "Il pulsante “CONFIRM CART” -> “Cofirm Cart” (In generale i pulsanti facciamoli con la lettera iniziale Maiuscola) ",
+      "isDone": true
+    },
+    {
+      "text": "ORDINE:"
+    },
+    {
+      "text": "Versione Italiano -> C’è un ; nel campo Qta",
+      "isDone": true
+    },
+    {
+      "text": "Versione Inglese -> Sostituire Item",
+      "isDone": true
+    },
+    {
+      "text": "Cambiare Item con Product"
+    },
+    {
+      "text": "SCADENZIARIO: Controllare MENU Header"
+    }
+  ]
