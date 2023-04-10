@@ -7,10 +7,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ButtonAppBar from './menu'
 import {firestore} from "./firebase";
 import { getDocs,addDoc,collection,deleteDoc,doc} from "firebase/firestore";
+import openDialog from './dialog';
 
 
 
 function Todo({ todo, index, markTodo, removeTodo, }) {
+
+  const handleRemoveClick = () => {
+    openDialog("Conferma eliminazione", "Sei sicuro di voler eliminare questo Todo?")
+      .then((result) => {
+        if (result) {
+          removeTodo();
+        }
+      })
+      .catch((error) => {
+        console.error("Errore nel dialogo di conferma: ", error);
+      });
+  };
+
+
   return (
     
     <div className="todo">
@@ -30,7 +45,8 @@ function Todo({ todo, index, markTodo, removeTodo, }) {
           <Button className="btnConfDel" variant="outline-success" onClick={() => markTodo(index)}>
             ✓
           </Button>{" "}
-          <Button className="btnConfDel" variant="outline-danger" onClick={() => removeTodo(index)}>
+          <Button className="btnConfDel" variant="outline-danger" onClick={() => handleRemoveClick()}>
+            
             ✕
           </Button>
           
@@ -125,7 +141,12 @@ function App() {
   };
   */
 
+  
+
   const removeTodo = async (index, id) => { // aggiunto id come parametro
+    
+       
+    
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
@@ -136,6 +157,7 @@ function App() {
     try {
       await deleteDoc(doc(firestore, "todos", id));
       console.log("Documento eliminato con successo!");
+    
     } catch (error) {
       console.error("Errore nell'eliminazione del documento: ", error);
     }
