@@ -17,6 +17,7 @@ function Todo({ todo, index, markTodo, removeTodo, }) {
     openDialog("Conferma eliminazione", "Sei sicuro di voler eliminare questo Todo?")
       .then((result) => {
         if (result) {
+          console.log(result);
           removeTodo();
         }
       })
@@ -142,11 +143,8 @@ function App() {
   */
 
   
-
-  const removeTodo = async (index, id) => { // aggiunto id come parametro
-    
-       
-    
+  
+  const removeTodo = async (index, id) => { // aggiunto id come parametro  
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
