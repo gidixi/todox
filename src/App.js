@@ -46,8 +46,7 @@ function Todo({ todo, index, markTodo, removeTodo, }) {
           <Button className="btnConfDel" variant="outline-success" onClick={() => markTodo(index)}>
             ✓
           </Button>{" "}
-          <Button className="btnConfDel" variant="outline-danger" onClick={() => handleRemoveClick()}>
-            
+          <Button className="btnConfDel" variant="outline-danger" onClick={() => handleRemoveClick()}>            
             ✕
           </Button>
           
